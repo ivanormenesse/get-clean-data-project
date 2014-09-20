@@ -102,10 +102,12 @@ rm(merge1train,merge2train,subjecttrain,xtrain,ytrain)
 hacdata<-rbind(test,train)
 
 ##Calculating mean of each variable per subject per activity
-
+library(plyr)
 ##Creating counts on activities and subjects id's to use on the for loops
-tmpact<-count(unique(hacdata$activity));activity_count<-sum(tmpact$freq)
-tmpsbj<-count(unique(hacdata$subject));subject_count<-sum(tmpsbj$freq)
+tmpact<-count(unique(hacdata$activity))
+activity_count<-sum(tmpact$freq)
+tmpsbj<-count(unique(hacdata$subject))
+subject_count<-sum(tmpsbj$freq)
 
 #Creating an empty matrix to receive the for loops outputs
 data<-matrix(NA,activity_count*subject_count,length(hacdata))
